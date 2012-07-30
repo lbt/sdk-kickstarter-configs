@@ -1,0 +1,71 @@
+Name: sdk-kickstarter-configs
+Summary: Kickstarter configs for Mer SDK
+Description: Configuration files to build Mer SDK and variants
+Version: 0.8
+Release: 1
+Group: System/Base
+License: Public Domain
+BuildArch: noarch
+URL: https://github.com/lbt/sdk-kickstarter-configs
+Sources:
+    - sdk-kickstarter-scripts.tgz
+    - 00sdk.yaml
+Requires:
+    - mer-kickstarter-configs
+PkgBR:
+    - mer-kickstarter-configs
+    - mer-kickstarter
+Configure: none
+Builder: none
+
+Files:
+    - "%{_datadir}/kickstarter-configs/sdk/*"
+
+SubPackages:
+    - Name:  sdk-kickstarter-ks
+      AsWholeName : true
+      Summary: Kickstarts for the Mer SDK and variants
+      Description: Kickstart files to build Mer SDK and variants
+      Group: System/Base
+      Files:
+        - "%{_datadir}/kickstarts/*"
+
+    - Name:  sdk-chroot
+      AsWholeName : true
+      Summary: Mer SDK files for the chroot variant
+      Description: Contains the mer_sdk_chroot script and supporting configs
+      Group: System/Base
+      Files:
+        - "/mer-sdk-chroot"
+        - "/mer-bash-setup"
+        - "%{_bindir}/sdk-upgrade"
+
+    - Name:  sdk-lxc
+      AsWholeName : true
+      Summary: Mer SDK files for the chroot variant
+      Description: Contains the mer_sdk_lxc script and supporting configs
+      Group: System/Base
+      Files:
+        - "/mer-sdk-lxc"
+        - "%{_bindir}/sdk-upgrade"
+
+    - Name:  sdk-vm
+      AsWholeName : true
+      Summary: Mer SDK files for the VM variant
+      Description: Contains the supporting configs for VMs
+      Group: System/Base
+      Files:
+        - "/mer-sdk-lxc"
+        - "%{_bindir}/sdk-upgrade"
+
+    - Name:  sdk-sb2-config
+      AsWholeName : true
+      Summary: Mer SDK files to configure sb2
+      Description: Contains the sdk build and install modes used by scratchbox2 in the SDK
+      Group: System/Base
+      Requires:
+        - scratchbox2
+      Files:
+        - "%{_datadir}/scratchbox2/modes/*"
+
+

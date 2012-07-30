@@ -1,0 +1,75 @@
+* Mon Jul 30 2012 David Greaves <david@dgreaves.com> - 0.8-1
+- Package version 0.8
+- Warn about obsolete Testing repo
+- Test for and fix broken /etc/mtab
+- Add Tom Swindell's 'exec' function to support QtCreator
+- Move to gitpkg format
+- SB2: Add ~/.sbrules support and make everything in /parentroot 'external'
+- Clean up ssl certs to permit updating SDK. Fixes MER#424
+
+* Sun May 27 2012 David Greaves <david@dgreaves.com> - 0.7-1
+- Move to git f3e9a952:
+ - new sb2 rules
+ - Merge Bradley Smith's tidy-up on umount code (with minor formatting changes) 
+ - create bin/sdk-upgrade
+- Use Tools release from http://repo.pub.meego.com/releases/Mer-Tools/5.0.1/builds/i486/packages/
+
+* Wed Mar 21 2012 David Greaves <david@dgreaves.com> - 0.6-2
+- Added bsdtar to 00sdk.yaml
+
+* Tue Mar 20 2012 David Greaves <david@dgreaves.com> - 0.6-1
+- 1c46714q
+- Now creates sdk-sb2-config package including sdk-build and
+  sdk-install modes based on obs-rpm-build and obs-rpm-install but
+  modified to work with zypper
+- Fix a typo in setting the /tmp permissions
+
+* Sat Mar 3 2012 David Greaves <david@dgreaves.com> - 0.5-1
+- git 34af4c3
+- Use mer version of rpm rebuild script
+- Fix /tmp permissions
+- Include mer pre-link snippet
+- Verify the /etc/MerSDK stamp file exists and add it to the ks
+- More fixes for sdk unbindable mount issues
+
+* Thu Mar 1 2012 David Greaves <david@dgreaves.com> - 0.4-1
+- git ef3697e
+- Remove mer user to avoid conflict with uid 500 (common in fedora apparently)
+- Introduce need for sdks/ directory as parent for SDK - see code for details
+
+* Sat Feb 25 2012 David Greaves <david@dgreaves.com> - 0.3-1
+- git ef35f11
+- Change usage to
+  - mer-sdk-chroot mount
+    This sets up bind mounts in the chroot as a one-off
+  - mer-sdk-chroot enter
+    May be used in multiple terminals and simply enters the chroot
+  - mer-sdk-chroot umount
+    Used to un-mount the bind mounts in case the SDK needs removing
+- Support ~/.mersdk.profile execution when entering SDK chroot (magic)
+- Count active chroot session
+- Rework user hooks to support
+  - enter_sdk
+  - leave_sdk
+  - mount_sdk
+  - umount_sdk
+- umount everything in the chroot
+- use --rbind to mount / on parentroot; also use --make-unbindable to
+  support concurrent SDK usage
+- Support all/none/home/root as valid mount variants
+- Ensure sdkroot is canonical
+- Add -r to make supporting a different rootfs explicit
+* Thu Feb 23 2012 David Greaves <david@dgreaves.com> - 0.2-1
+- git 628b2407
+- fix MER#196
+- fix the copy of ssl certs from host to the chroot
+- Fix message to use $0
+- Use setarch i386 for the sudo chroot to allow osc (amongst others)
+  to determine that this is not an x86_64 arch
+
+* Wed Feb 22 2012 David Greaves <david@dgreaves.com> - 0.1-3
+- Uses updated mer configs
+- Improved mer-sdk-chroot
+
+* Sat Feb 11 2012 David Greaves <david@dgreaves.com> - 0.1-2
+- First release
