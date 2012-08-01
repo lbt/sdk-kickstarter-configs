@@ -549,6 +549,12 @@ emulate_mode_rules = {
 
 		{path = "/", rules = rootdir_rules},
 		{prefix = "/", map_to = target_root,
+-- Import Mer common functions
+dofile("/usr/share/scratchbox2/modes/mer-common.lua")
+
+-- Now run ~/.sbrules
+run_sbrules()
+
 		 protection = readonly_fs_if_not_root}
 }
 
