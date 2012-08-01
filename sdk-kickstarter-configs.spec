@@ -18,6 +18,7 @@ URL:        https://github.com/lbt/sdk-kickstarter-configs
 Source0:    sdk-kickstarter-scripts.tgz
 Source1:    00sdk.yaml
 Source100:  sdk-kickstarter-configs.yaml
+Requires:   mer-kickstarter-configs
 BuildRequires:  mer-kickstarter-configs
 BuildRequires:  mer-kickstarter
 
@@ -115,6 +116,13 @@ cp -ar modes/* %{buildroot}/usr/share/scratchbox2/modes/
 # >> install post
 # << install post
 
+
+%pre
+# >> pre
+%pre -n sdk-chroot
+if ! rpm --quiet -q ca-certificates && [ -d /etc/ssl/certs ] ; then echo "Cleaning up copied ssl certs. ca-certificates should now install"; rm -rf /etc/ssl/certs ;fi
+
+# << pre
 
 %files
 %defattr(-,root,root,-)
