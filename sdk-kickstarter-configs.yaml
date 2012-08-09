@@ -12,6 +12,9 @@ Sources:
     - 00sdk.yaml
 Requires:
     - mer-kickstarter-configs
+RequiresPre:
+    - rpm
+    - "/bin/rm"
 PkgBR:
     - mer-kickstarter-configs
     - mer-kickstarter

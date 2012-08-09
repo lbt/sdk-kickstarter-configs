@@ -6,6 +6,7 @@
 - Move to gitpkg format
 - SB2: Add ~/.sbrules support and make everything in /parentroot 'external'
 - Clean up ssl certs to permit updating SDK. Fixes MER#424
+- Require(pre): rpm and rm to permit mic to build
 
 * Sun May 27 2012 David Greaves <david@dgreaves.com> - 0.7-1
 - Move to git f3e9a952:
