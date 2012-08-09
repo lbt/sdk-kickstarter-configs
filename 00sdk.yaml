@@ -14,13 +14,18 @@
 ExternalConfigs:
   - /usr/share/kickstarter-configs/mer
 
+RepositoryURLVariables:
+  TOOLS_RELEASE: 6.0.2
+  TOOLS_ARCH: i486
+  MER_RELEASE: 0.20120719.1
+  MER_ARCH: i486
+  "@BUILD_ID@": 0.20120719.1
+
 Repositories:
-  - Name: mer-tools-i486
-    Url:  http://repo.pub.meego.com/releases/Mer-Tools/5.1.0/builds/i486/packages/
-  - Name: mer-tools-testing-i486
-    Url:  http://repo.pub.meego.com/Mer:/Tools:/Testing/Mer_Core_i486/
+  - Name: mer-tools
+    Url:  http://repo.pub.meego.com/releases/Mer-Tools/TOOLS_RELEASE/builds/TOOLS_ARCH/packages/
   - Name: mer-cross-tools
-    Url:  http://releases.merproject.org/releases/@BUILD_ID@/builds/i486/cross/
+    Url:  http://releases.merproject.org/releases/MER_RELEASE/builds/MER_ARCH/cross/
 
 # This should default to --save for all individual configurations
 RepositoryOptions: --save
@@ -29,99 +34,14 @@ RepositoryOptions: --save
 # This is not processed in addition to Mer Base System, it overwrites
 # values (like PostScripts)
 Mer SDK core:
-  Language: en_US.UTF-8        
-  Keyboard: us
-  Timezone: UTC
-  RepositoryOptions: --save --debuginfo --source
   ExtraPackages:
     - sudo
     - vim
     - net-tools
   PostScripts:
-    - /usr/share/kickstarter-configs/mer/rpm-rebuilddb.post
-    - /usr/share/kickstarter-configs/mer/prelink.post
     - mtab.script
     - tmp_perms.script
     - sdk_stamp.script
-  Repos:
-    - mer-core
-  Groups:
-    - Mer Core
-# Unused but needed by kickstarter for some reason
-  PartSize: 0
-  FileSystem: none
-  RootPass: rootme
-  DefaultUser: mer
-  DefaultUserPass: mer
-
-# Common tasks that will be used in images
-Mer image creation:
-  ExtraPackages:
-    - mic
-    - mer-kickstarter
-    - psmisc
-    - qemu-usermode-static
-
-Mer development tools:
-  ExtraPackages:
-    - gcc
-    - gcc-c++
-    - make
-    - gdb
-    - binutils
-    - automake
-    - kernel-devel
-    - git
-    - patch
-
-# SB2 for various architectures
-Mer SB2 armv6l:
-  Repos:
-    - mer-cross-tools
-  ExtraPackages:
-    - sdk-sb2-config
-    - qemu-usermode
-    - cross-armv6l-gcc
-    - cross-armv6l-binutils
-# mpc should be pulled in by cross- packages
-    - mpc
-
-Mer SB2 armv7l:
-  Repos:
-    - mer-cross-tools
-  ExtraPackages:
-    - sdk-sb2-config
-    - qemu-usermode
-    - cross-armv7l-gcc
-    - cross-armv7l-binutils
-    - mpc
-
-Mer SB2 armv7hl:
-  Repos:
-    - mer-cross-tools
-  ExtraPackages:
-    - sdk-sb2-config
-    - qemu-usermode
-    - cross-armv7hl-gcc
-    - cross-armv7hl-binutils
-    - mpc
-
-Mer SB2 mipsel:
-  Repos:
-    - mer-cross-tools
-  ExtraPackages:
-    - sdk-sb2-config
-    - qemu-usermode
-    - cross-mipsel-gcc
-    - cross-mipsel-binutils
-    - mpc
-
-Mer OBS development:
-  ExtraPackages:
-    - osc
-    - spectacle
-    - build
-    - bsdtar
 
 # This should permit mount bind of /home or something
 Mer chroot setup:
@@ -133,78 +53,39 @@ Mer VM setup:
   ExtraPackages:
     - sdk-vm
 
-# Do we want to install these into images? Somehow make zypper patterns?
-Mer python development:
+Mer Base SDK:
   ExtraPackages:
-    - python-devel
-    - swig
-
-Mer kernel development:
-  ExtraPackages:
-    - kernel-headers
-
-Mer Qt development:
-  ExtraPackages:
-    - lib-qt5-devel
+      - "@Mer-development-tools"
+      - "@Mer-image-creation"
+      - "@Mer-OBS-development"
 
 Configurations:
-  - Name: mer-sb2sdk-testing-i486-chroot
+  - Name: mer-sdk-i486-chroot-sb2-armv6l
     Active: True
     Repos:
-      - mer-tools-testing-i486
+      - mer-tools
+      - mer-cross-tools
     Inherit:
       - Generic X86 architecture
-#      - Mer Base System
+      - Mer Base System
       - Mer SDK core
-      - Mer image creation
-      - Mer OBS development
+      - Mer Base SDK
       - Mer chroot setup
-      - Mer SB2 armv6l
-      - Mer SB2 armv7l
-      - Mer SB2 armv7hl
-      - Mer SB2 mipsel
-    FileName: mer-sb2sdk-testing-i486-chroot
-
-  - Name: mer-sb2sdk-i486-chroot
-    Active: True
-    Repos:
-      - mer-tools-i486
-    Inherit:
-      - Generic X86 architecture
-#      - Mer Base System
-      - Mer SDK core
-      - Mer image creation
-      - Mer OBS development
-      - Mer chroot setup
-      - Mer SB2 armv6l
-      - Mer SB2 armv7l
-      - Mer SB2 armv7hl
-      - Mer SB2 mipsel
-    FileName: mer-sb2sdk-i486-chroot
+    ExtraPackages:
+      - "@Mer-SB2-armv6l"
+    FileName: mer-sb2sdk-i486-chroot-armv6l
 
   - Name: mer-sdk-i486-chroot
     Active: True
     Repos:
-      - mer-tools-i486
+      - mer-tools
+      - mer-cross-tools
     Inherit:
       - Generic X86 architecture
-#      - Mer Base System
+      - Mer Base System
       - Mer SDK core
-      - Mer image creation
-      - Mer OBS development
+      - Mer Base SDK
       - Mer chroot setup
     FileName: mer-sdk-i486-chroot
-
-  - Name: mer-sdk-i486-vm
-    Active: True
-    Repos:
-      - mer-tools-i486
-    Inherit:
-      - Generic X86 architecture
-#      - Mer Base System
-      - Mer SDK core
-      - Mer image creation
-      - Mer OBS development
-      - Mer VM setup
-    FileName: mer-sdk-i486-vm
-
+    ExtraPackages:
+      - "-kernel-devel"
