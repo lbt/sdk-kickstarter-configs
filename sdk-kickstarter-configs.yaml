@@ -9,7 +9,6 @@ BuildArch: noarch
 URL: https://github.com/lbt/sdk-kickstarter-configs
 Sources:
     - sdk-kickstarter-scripts.tgz
-    - 00sdk.yaml
 Requires:
     - mer-kickstarter-configs
 RequiresPre:

@@ -16,7 +16,6 @@ License:    Public Domain
 BuildArch:  noarch
 URL:        https://github.com/lbt/sdk-kickstarter-configs
 Source0:    sdk-kickstarter-scripts.tgz
-Source1:    00sdk.yaml
 Source100:  sdk-kickstarter-configs.yaml
 Requires:   mer-kickstarter-configs
 Requires(pre): rpm
@@ -73,13 +72,12 @@ Contains the sdk build and install modes used by scratchbox2 in the SDK
 %setup -q -n src
 
 # >> setup
-cp %{SOURCE1} .
 # << setup
 
 %build
 # >> build pre
 mkdir kickstarts
-mer-kickstarter -c %{SOURCE1} -o kickstarts/
+mer-kickstarter -c 00sdk.yaml -o kickstarts/
 # << build pre
 
 
