@@ -9,7 +9,7 @@ Name:       sdk-kickstarter-configs
 # << macros
 
 Summary:    Kickstarter configs for Mer SDK
-Version:    0.8
+Version:    0.9
 Release:    1
 Group:      System/Base
 License:    Public Domain
@@ -41,14 +41,6 @@ Requires:   %{name} = %{version}-%{release}
 
 %description -n sdk-chroot
 Contains the mer_sdk_chroot script and supporting configs
-
-%package -n sdk-lxc
-Summary:    Mer SDK files for the chroot variant
-Group:      System/Base
-Requires:   %{name} = %{version}-%{release}
-
-%description -n sdk-lxc
-Contains the mer_sdk_lxc script and supporting configs
 
 %package -n sdk-vm
 Summary:    Mer SDK files for the VM variant
@@ -99,18 +91,18 @@ cp -ar *.yaml %{buildroot}%{_datadir}/kickstarter-configs/sdk/
 
 # sdk-chroot
 mkdir -p %{buildroot}%{_bindir}/
-cp sdk-upgrade %{buildroot}%{_bindir}/
+cp sdk-version %{buildroot}%{_bindir}/
+
 cp mer-sdk-chroot %{buildroot}/
 cp mer-bash-setup %{buildroot}/
-# sdk-lxc
-cp mer-sdk-lxc %{buildroot}/
 
 # sdk-vm
+
+# sdk-sb2-config
 mkdir -p %{buildroot}/usr/share/scratchbox2/modes/
 cp -ar modes/* %{buildroot}/usr/share/scratchbox2/modes/
 
 
-# sdk-sb2-config
 # << install pre
 
 # >> install post
@@ -140,21 +132,13 @@ if ! rpm --quiet -q ca-certificates && [ -d /etc/ssl/certs ] ; then echo "Cleani
 %defattr(-,root,root,-)
 /mer-sdk-chroot
 /mer-bash-setup
-%{_bindir}/sdk-upgrade
+%{_bindir}/sdk-version
 # >> files sdk-chroot
 # << files sdk-chroot
 
-%files -n sdk-lxc
-%defattr(-,root,root,-)
-/mer-sdk-lxc
-%{_bindir}/sdk-upgrade
-# >> files sdk-lxc
-# << files sdk-lxc
-
 %files -n sdk-vm
 %defattr(-,root,root,-)
-/mer-sdk-lxc
-%{_bindir}/sdk-upgrade
+%{_bindir}/sdk-version
 # >> files sdk-vm
 # << files sdk-vm
 

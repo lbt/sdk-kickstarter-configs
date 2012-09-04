@@ -1,7 +1,7 @@
 Name: sdk-kickstarter-configs
 Summary: Kickstarter configs for Mer SDK
 Description: Configuration files to build Mer SDK and variants
-Version: 0.8
+Version: 0.9
 Release: 1
 Group: System/Base
 License: Public Domain
@@ -19,6 +19,7 @@ PkgBR:
     - mer-kickstarter
 Configure: none
 Builder: none
+SetupOptions: -q -n src
 
 Files:
     - "%{_datadir}/kickstarter-configs/sdk/*"
@@ -40,16 +41,7 @@ SubPackages:
       Files:
         - "/mer-sdk-chroot"
         - "/mer-bash-setup"
-        - "%{_bindir}/sdk-upgrade"
-
-    - Name:  sdk-lxc
-      AsWholeName : true
-      Summary: Mer SDK files for the chroot variant
-      Description: Contains the mer_sdk_lxc script and supporting configs
-      Group: System/Base
-      Files:
-        - "/mer-sdk-lxc"
-        - "%{_bindir}/sdk-upgrade"
+        - "%{_bindir}/sdk-version"
 
     - Name:  sdk-vm
       AsWholeName : true
@@ -57,8 +49,7 @@ SubPackages:
       Description: Contains the supporting configs for VMs
       Group: System/Base
       Files:
-        - "/mer-sdk-lxc"
-        - "%{_bindir}/sdk-upgrade"
+        - "%{_bindir}/sdk-version"
 
     - Name:  sdk-sb2-config
       AsWholeName : true
