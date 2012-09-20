@@ -1,3 +1,8 @@
+* Thu Sep 20 2012 David Greaves <david@dgreaves.com> - 0.10-1
+ - Added Robin Burchell's md script to a new submodule called sdk-utils
+ - Add quickbuild script to make it easy to quickly reuse "osc build"
+   to regenerate  rpms based on a local source tree
+
 * Tue Sep 04 2012 David Greaves <david@dgreaves.com> - 0.9-1
 - Add  /parentroot as being outside, like /home
 - Check if ~/.sbrules exists before including it

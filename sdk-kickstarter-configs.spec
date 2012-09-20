@@ -9,7 +9,7 @@ Name:       sdk-kickstarter-configs
 # << macros
 
 Summary:    Kickstarter configs for Mer SDK
-Version:    0.9
+Version:    0.10
 Release:    1
 Group:      System/Base
 License:    Public Domain
@@ -59,6 +59,14 @@ Requires:   scratchbox2
 %description -n sdk-sb2-config
 Contains the sdk build and install modes used by scratchbox2 in the SDK
 
+%package -n sdk-utils
+Summary:    Mer SDK utility scripts
+Group:      System/Base
+Requires:   %{name} = %{version}-%{release}
+
+%description -n sdk-utils
+Contains some utility scripts to support Mer SDK development
+
 
 %prep
 %setup -q -n src
@@ -102,6 +110,9 @@ cp mer-bash-setup %{buildroot}/
 mkdir -p %{buildroot}/usr/share/scratchbox2/modes/
 cp -ar modes/* %{buildroot}/usr/share/scratchbox2/modes/
 
+# sdk-utils
+cp mb %{buildroot}%{_bindir}/
+cp qb %{buildroot}%{_bindir}/
 
 # << install pre
 
@@ -147,3 +158,10 @@ if ! rpm --quiet -q ca-certificates && [ -d /etc/ssl/certs ] ; then echo "Cleani
 %{_datadir}/scratchbox2/modes/*
 # >> files sdk-sb2-config
 # << files sdk-sb2-config
+
+%files -n sdk-utils
+%defattr(-,root,root,-)
+%{_bindir}/mb
+%{_bindir}/qb
+# >> files sdk-utils
+# << files sdk-utils

@@ -1,7 +1,7 @@
 Name: sdk-kickstarter-configs
 Summary: Kickstarter configs for Mer SDK
 Description: Configuration files to build Mer SDK and variants
-Version: 0.9
+Version: 0.10
 Release: 1
 Group: System/Base
 License: Public Domain
@@ -60,5 +60,14 @@ SubPackages:
         - scratchbox2
       Files:
         - "%{_datadir}/scratchbox2/modes/*"
+
+    - Name:  sdk-utils
+      AsWholeName : true
+      Summary: Mer SDK utility scripts
+      Description: Contains some utility scripts to support Mer SDK development
+      Group: System/Base
+      Files:
+        - "%{_bindir}/mb"
+        - "%{_bindir}/qb"
 
 
