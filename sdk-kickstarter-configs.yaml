@@ -1,7 +1,7 @@
 Name: sdk-kickstarter-configs
 Summary: Kickstarter configs for Mer SDK
 Description: Configuration files to build Mer SDK and variants
-Version: 0.10
+Version: 0.11
 Release: 1
 Group: System/Base
 License: Public Domain
@@ -11,9 +11,6 @@ Sources:
     - sdk-kickstarter-scripts.tgz
 Requires:
     - mer-kickstarter-configs
-RequiresPre:
-    - rpm
-    - "/bin/rm"
 PkgBR:
     - mer-kickstarter-configs
     - mer-kickstarter
@@ -32,42 +29,5 @@ SubPackages:
       Group: System/Base
       Files:
         - "%{_datadir}/kickstarts/*"
-
-    - Name:  sdk-chroot
-      AsWholeName : true
-      Summary: Mer SDK files for the chroot variant
-      Description: Contains the mer_sdk_chroot script and supporting configs
-      Group: System/Base
-      Files:
-        - "/mer-sdk-chroot"
-        - "/mer-bash-setup"
-        - "%{_bindir}/sdk-version"
-
-    - Name:  sdk-vm
-      AsWholeName : true
-      Summary: Mer SDK files for the VM variant
-      Description: Contains the supporting configs for VMs
-      Group: System/Base
-      Files:
-        - "%{_bindir}/sdk-version"
-
-    - Name:  sdk-sb2-config
-      AsWholeName : true
-      Summary: Mer SDK files to configure sb2
-      Description: Contains the sdk build and install modes used by scratchbox2 in the SDK
-      Group: System/Base
-      Requires:
-        - scratchbox2
-      Files:
-        - "%{_datadir}/scratchbox2/modes/*"
-
-    - Name:  sdk-utils
-      AsWholeName : true
-      Summary: Mer SDK utility scripts
-      Description: Contains some utility scripts to support Mer SDK development
-      Group: System/Base
-      Files:
-        - "%{_bindir}/mb"
-        - "%{_bindir}/qb"
 
 
