@@ -16,7 +16,7 @@ ExternalConfigs:
   - /usr/share/kickstarter-configs/mer
 
 RepositoryURLVariables:
-  TOOLS_RELEASE: 6.1.0
+  TOOLS_RELEASE: rolling
   TOOLS_ARCH: i486
   MER_ARCH: i486
   MER_RELEASE: 0.20120920.1
@@ -27,8 +27,11 @@ Repositories:
     Url:  http://repo.pub.meego.com/releases/Mer-Tools/TOOLS_RELEASE/builds/TOOLS_ARCH/packages/
   - Name: mer-cross-tools
     Url:  http://releases.merproject.org/releases/MER_RELEASE/builds/MER_ARCH/cross/
-  - Name: mer-adaptation-vm
+  - Name: nemo-adaptation-vm
     Url:  http://repo.pub.meego.com/CE:/Adaptation:/x86-generic/Mer_Core_i486/
+
+#  - Name: nemo-mw-shared
+#    Url:  http://repo.pub.meego.com/CE:/MW:/Shared/Mer_Core_i486/
 
 # This should default to --save for all individual configurations
 RepositoryOptions: --save
@@ -49,6 +52,7 @@ Mer SDK core:
     - sudo
     - vim
     - net-tools
+    - sdk-utils
 # Remove this until we rename it python-M2Crypto
     - "-m2crypto"
   PostScripts:
@@ -71,7 +75,8 @@ Mer VM setup:
   # that a user-provided disk.
   PartSize: 2048
   Repos:
-    - mer-adaptation-vm
+    - nemo-adaptation-vm
+#    - nemo-mw-shared (plymouth)
 
   ExtraPackages:
     - sdk-vm
@@ -81,12 +86,14 @@ Mer VM setup:
     - openssh-server
     - virtualbox-guest-modules
     - virtualbox-guest-tools
+#    - plymouth-lite # Nice to have some kind of splash screen
+
   PostScripts:
     # Ensure that we depmod the vbox modules
     - scripts/depmod.script
     # mic doesn't make vmdk so emit a message explaining how to do this
     - scripts/vbox_image.script
-    # Prepare the SDK user and home
+    # Prepare the SDK user and home and setup boot
     - scripts/vmuser.script
 
 Configurations:
@@ -167,3 +174,19 @@ Configurations:
       - Mer SDK core
       - Mer VM setup
     FileName: mer-sdk-i486-vm
+
+  - Name: mer-sdk-nemo-i486-vm
+    Active: True
+    Inherit:
+      - Generic X86 architecture
+      - Mer Base System
+      - Mer SDK core
+      - Mer VM setup
+    ExtraPackages:
+# Support cross-build for N9
+      - "@Mer-SB2-armv7hl"
+      - libqt-devel
+#    Groups:
+#      - Mer-SB2-armv7hl
+#      - QtCreator-target
+#      - NemoBranding
