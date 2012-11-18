@@ -4,6 +4,17 @@
 /usr/sbin/groupadd -r vboxsf >/dev/null 2>&1 || true 
 /usr/sbin/useradd --uid 1001 --create-home --user-group --groups vboxsf mersdk
 
-echo "home     /home/mersdk     vboxsf rw,exec,uid=1001,gid=1001,dev  0 0" >> /etc/fstab
+# mersdk user needs sudo rights
+echo "mersdk ALL=NOPASSWD: ALL" > /etc/sudoers.d/mersdk
+chmod 440 /etc/sudoers.d/mersdk
+
+# We will need to map the targets area to the targets on the host
+mkdir -p /srv/mer/targets
+chown mersdk /srv/mer/targets
+
+# Anticipate exporting Qt target information to sysroots to improve
+# performance for building
+mkdir -p /srv/mer/sysroots
+chown mersdk /srv/mer/sysroots
 
 # end vmuser.script

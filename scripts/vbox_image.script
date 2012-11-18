@@ -6,8 +6,9 @@ to be used with VirtualBox.
 
 To do the conversion run the following command on your host machine:
 
-  sudo qemu-img convert -O vmdk mer-sdk-i486-vm-sda.raw mer-sdk-i486-vm-sda.vmdk
-
+  sudo VBoxManage convertfromraw IMAGE.raw IMAGE.vdi --format VDI
+or
+  sudo qemu-img convert -O vdi IMAGE.raw IMAGE.vdi
 
 EOF
 # end vbox_image.script
