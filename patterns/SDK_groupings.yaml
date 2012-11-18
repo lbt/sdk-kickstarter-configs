@@ -164,3 +164,13 @@ Packages:
     - mpc
 Summary: Mer SB2 mipsel
 ...
+---
+Description: Mer SB2 i486
+Name: Mer-SB2-i486
+Packages:
+    - sdk-sb2-config
+    - cross-i486-gcc
+    - cross-i486-binutils
+    - mpc
+Summary: Mer SB2 i486
+...
