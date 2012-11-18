@@ -74,16 +74,20 @@ Mer VM setup:
   # Later we'll move to having all targets in /srv and making
   # that a user-provided disk.
   PartSize: 2048
+  BootloaderAppend: vga=0x343
   Repos:
     - nemo-adaptation-vm
 #    - nemo-mw-shared (plymouth)
 
   ExtraPackages:
     - sdk-vm
+    - sdk-webapp
     - kernel-adaptation-pc
     - acpid
     - linux-firmware
     - openssh-server
+    - plymouth-lite
+    - splashscreen-sdk
     - virtualbox-guest-modules
     - virtualbox-guest-tools
 #    - plymouth-lite # Nice to have some kind of splash screen
