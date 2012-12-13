@@ -50,14 +50,15 @@ Packages:
 Summary: Mer testing tools
 ...
 ---
-Description: Mer OBS development
-Name: Mer-OBS-development
+Description: Mer packaging
+Name: Mer-packaging
 Packages:
     - osc
     - spectacle
     - build
     - bsdtar
-Summary: Mer OBS development
+    - sdk-utils
+Summary: Mer packaging
 ...
 ---
 Description: Mer python development

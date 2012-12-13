@@ -47,7 +47,7 @@ Mer SDK core:
 # Standard tools
     - Mer-development-tools
     - Mer-image-creation
-    - Mer-OBS-development
+    - Mer-packaging
   ExtraPackages:
     - sudo
     - vim
