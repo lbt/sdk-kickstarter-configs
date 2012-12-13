@@ -189,7 +189,7 @@ Configurations:
     ExtraPackages:
 # Support cross-build for N9
       - "@Mer-SB2-armv7hl"
-      - libqt-devel
+#      - libqt-devel
 #    Groups:
 #      - Mer-SB2-armv7hl
 #      - QtCreator-target
