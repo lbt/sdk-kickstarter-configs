@@ -1,0 +1,6 @@
+## vga_mode.script from sdk-kickstarter-configs package
+
+# mic's 'append' seems not to be working for mic 0.13
+sed -i '/append/s/$/ vga=0x343/' /boot/extlinux/extlinux.conf
+
+# end vga_mode.script

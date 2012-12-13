@@ -74,6 +74,7 @@ Mer VM setup:
   # Later we'll move to having all targets in /srv and making
   # that a user-provided disk.
   PartSize: 2048
+# This doesn't work in mic 0.13:
   BootloaderAppend: vga=0x343
   Repos:
     - nemo-adaptation-vm
@@ -99,6 +100,8 @@ Mer VM setup:
     - scripts/vbox_image.script
     # Prepare the SDK user and home and setup boot
     - scripts/vmuser.script
+    # Fix the vga= in the boot line
+    - scripts/vga_mode.script
 
 Configurations:
   - Name: mer-sdk-i486-chroot
