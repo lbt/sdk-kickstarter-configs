@@ -173,7 +173,7 @@ Configurations:
       - "@Mer-SB2-mipsel"
     FileName: mer-sb2sdk-i486-chroot-mipsel
 
-  - Name: mer-sdk-i486-vm
+  - Name: mer-sdk-i486-vm-none
     Active: True
     Inherit:
       - Generic X86 architecture
@@ -182,18 +182,12 @@ Configurations:
       - Mer VM setup
     FileName: mer-sdk-i486-vm
 
-  - Name: mer-sdk-nemo-i486-vm
+  - Name: mer-sdk-i486-vm-armv7hl
     Active: True
     Inherit:
       - Generic X86 architecture
       - Mer Base System
       - Mer SDK core
       - Mer VM setup
-    ExtraPackages:
-# Support cross-build for N9
-      - "@Mer-SB2-armv7hl"
-#      - libqt-devel
-#    Groups:
-#      - Mer-SB2-armv7hl
-#      - QtCreator-target
-#      - NemoBranding
+    Groups:
+      - Mer-SB2-armv7hl
