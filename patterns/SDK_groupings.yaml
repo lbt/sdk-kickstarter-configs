@@ -1,7 +1,7 @@
 ---
 Description: Mer image creation
 Name: Mer-image-creation
-Packages:
+Requires:
     - mic
     - mer-kickstarter
     - psmisc
@@ -12,7 +12,7 @@ Summary: Mer image creation
 ---
 Description: Mer development tools
 Name: Mer-development-tools
-Packages:
+Requires:
     - gcc
     - gcc-c++
     - make
@@ -26,7 +26,7 @@ Summary: Mer development tools
 ---
 Description: Mer debugging tools
 Name: Mer-debug-tools
-Packages:
+Requires:
     - powertop
     - gdb
     - oprofile
@@ -43,7 +43,7 @@ Summary: Mer debugging tools
 ---
 Description: Mer testing tools
 Name: Mer-testing-tools
-Packages:
+Requires:
     - eat-host
     - testrunner-lite
     - qttas-server
@@ -52,7 +52,7 @@ Summary: Mer testing tools
 ---
 Description: Mer packaging
 Name: Mer-packaging
-Packages:
+Requires:
     - osc
     - spectacle
     - build
@@ -63,7 +63,7 @@ Summary: Mer packaging
 ---
 Description: Mer python development
 Name: Mer-python-development
-Packages:
+Requires:
     - python-devel
     - swig
 Summary: Mer python development
@@ -71,7 +71,7 @@ Summary: Mer python development
 ---
 Description: Mer ruby development
 Name: Mer-ruby-development
-Packages:
+Requires:
     - ruby
     - ruby19-devel
     - rubygem-gem2rpm
@@ -80,14 +80,14 @@ Summary: Mer python development
 ---
 Description: Mer kernel development
 Name: Mer-kernel-development
-Packages:
+Requires:
     - kernel-headers
 Summary: Mer kernel development
 ...
 ---
 Description: Mer Qt4 development
 Name: Mer-Qt4-development
-Packages:
+Requires:
     - libqt-devel
     - qt-devel-tools
     - qt-designer
@@ -97,14 +97,14 @@ Summary: Mer Qt4 development
 ---
 Description: Mer Qt5 development
 Name: Mer-Qt5-development
-Packages:
+Requires:
     - qtcreator
 Summary: Mer Qt5 development
 ...
 ---
 Description: Mer Device tools
 Name: Mer-device-tools
-Packages:
+Requires:
     - openssh
     - eat-device
 Summary: Mer tools typically used on a device
@@ -113,7 +113,7 @@ Summary: Mer tools typically used on a device
 ---
 Description: Mer SB2 armv6l
 Name: Mer-SB2-armv6l
-Packages:
+Requires:
     - sdk-sb2-config
     - qemu-usermode
     - cross-armv6l-gcc
@@ -124,7 +124,7 @@ Summary: Mer SB2 armv6l
 ---
 Description: Mer SB2 armv7l
 Name: Mer-SB2-armv7l
-Packages:
+Requires:
     - sdk-sb2-config
     - qemu-usermode
     - cross-armv7l-gcc
@@ -135,7 +135,7 @@ Summary: Mer SB2 armv7l
 ---
 Description: Mer SB2 armv7hl
 Name: Mer-SB2-armv7hl
-Packages:
+Requires:
     - sdk-sb2-config
     - qemu-usermode
     - cross-armv7hl-gcc
@@ -146,7 +146,7 @@ Summary: Mer SB2 armv7hl
 ---
 Description: Mer SB2 armv7tnhl
 Name: Mer-SB2-armv7tnhl
-Packages:
+Requires:
     - sdk-sb2-config
     - qemu-usermode
     - cross-armv7tnhl-gcc
@@ -157,7 +157,7 @@ Summary: Mer SB2 armv7tnhl
 ---
 Description: Mer SB2 mipsel
 Name: Mer-SB2-mipsel
-Packages:
+Requires:
     - sdk-sb2-config
     - qemu-usermode
     - cross-mipsel-gcc
@@ -168,7 +168,7 @@ Summary: Mer SB2 mipsel
 ---
 Description: Mer SB2 i486
 Name: Mer-SB2-i486
-Packages:
+Requires:
     - sdk-sb2-config
     - cross-i486-gcc
     - cross-i486-binutils
