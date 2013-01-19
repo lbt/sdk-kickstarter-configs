@@ -1,7 +1,9 @@
 * Thu Oct 18 2012 David Greaves <david@dgreaves.com> - 0.11-1
 - Split all supporting packages into sdk-setup
 - Add VirtualBox VM target
-- Update Mer version in images to 0.20120920.1 and Tools to 6.1.0
+- Update kickstarts to use tokens for @TOOLS_RELEASE@ and @TOOLS_ARCH@
+- Rename Mer-OBS-development to more accurate Mer-packaging
+- Name the 'nemo' SDK to be more generic
 
 * Thu Sep 20 2012 David Greaves <david@dgreaves.com> - 0.10-1
  - Added Robin Burchell's md script to a new submodule called sdk-utils
