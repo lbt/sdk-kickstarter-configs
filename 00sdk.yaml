@@ -51,8 +51,6 @@ Mer SDK core:
     - vim
     - net-tools
     - sdk-utils
-# Remove this until we rename it python-M2Crypto
-    - "-m2crypto"
   PostScripts:
     - scripts/mtab.script
     - scripts/tmp_perms.script
